@@ -1,4 +1,4 @@
-package com.cg;
+package com.cg.stm;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
