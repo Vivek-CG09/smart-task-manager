@@ -4,3 +4,13 @@ server:
 spring:
   application:
     name: smart-task-manager
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/CG_STM
+    username: postgres
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
