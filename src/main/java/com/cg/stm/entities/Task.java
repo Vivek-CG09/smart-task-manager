@@ -22,5 +22,5 @@ public class Task {
     private String name;
     private String status;
     private LocalDateTime createdAt;
-
+    private LocalDateTime updatedAt;
 }
