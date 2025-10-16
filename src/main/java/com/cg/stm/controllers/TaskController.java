@@ -2,6 +2,7 @@ package com.cg.stm.controllers;
 
 import com.cg.stm.models.TaskDto;
 import com.cg.stm.services.TaskService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class TaskController {
     private final TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<TaskDto> createTask(@Valid @RequestBody TaskDto taskDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.create(taskDto));
     }
 
