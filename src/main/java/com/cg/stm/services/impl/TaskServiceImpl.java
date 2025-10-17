@@ -1,6 +1,7 @@
 package com.cg.stm.services.impl;
 
 import com.cg.stm.entities.Task;
+import com.cg.stm.exception.TaskNotFoundException;
 import com.cg.stm.mappers.TaskMapper;
 import com.cg.stm.models.TaskDto;
 import com.cg.stm.repositories.TaskRepository;
@@ -43,7 +44,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskDto findById(Long taskId) {
         Task task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new RuntimeException("Task with Id : " + taskId + " does not exist"));
+                .orElseThrow(() -> new TaskNotFoundException("Task with Id : " + taskId + " does not exist"));
         return taskMapper.taskToTaskDto(task);
     }
 
@@ -70,7 +71,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskDto update(Long taskId, TaskDto taskDto) {
         Task task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new RuntimeException("Task with Id : " + taskId + " does not exist"));
+                .orElseThrow(() -> new TaskNotFoundException("Task with Id : " + taskId + " does not exist"));
         task.setName(taskDto.getName());
         task.setStatus(taskDto.getStatus());
         task.setUpdatedAt(LocalDateTime.now());
